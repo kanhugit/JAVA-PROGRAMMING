@@ -1,0 +1,236 @@
+		BOM;
+================================
+ BOM stands for browser object model.
+->it is used to interact with the browser.Window is the root elements
+->window object is the global object and default object
+->variables which are declared with var keyword will storing in window object 
+->this keyword refers to window objects. clg(this)//object
+->inside a function this keyword refers to current object
+->window reprents the browser window
+->some of the properties in window object are innerHeight and innerWidth etc
+->some of the methods in window object are open(),window.open(),window.close(),window.resizeto()
+->the object present inside the window object are screen,navigation,history,storage,document,location etc...
+->the direct member of the window object can be accesed directly without refering to window object name.
+
+                  			BOM(Browser Object Model)
+				--------------------------------------------------
+
+		            			window
+						-------
+   
+	screen      		history    	location     	document   	fetch  		navigation
+        |->avail height		|->forward	|->pathName	|->..		|->..		|->...
+	|->avail width		|-> backword	|->protocol					|->...
+	|->... 			|->go()
+
+
+
+			DOM
+		------------------------
+dom stands for document object model
+->when html file is loded in broswer it will create a tree representaion for the code written in the html file.
+->In dom document is the root element
+->DOM is used to do the dynamic changes to the webpages
+->In the dom tree different nodes will be present like comment nodes,elemnt nodes,plain text node etc..
+->All the tag in HTML file will be an object in DOM and the all attributes of the tag will become keys of that object
+->
+->
+->
+->
+->
+->
+->
+->EXP:  <html>
+	<head>
+		<title>DOM</title>
+	</head>
+	<body>
+	<div>
+		<p> para1</p>
+		<a href="" >link1</a>
+	</div>
+	<!--comments-->
+	</body>
+	</html>
+
+		dom Tree:
+               ----------
+				html
+
+
+			head			body
+			  |			  |
+			title			 div
+
+
+
+
+
+When we do dynamic chanages old dom tree is destroyed and new dom tree is created .
+To do the dynamic changes which is refered as dom manipulation we need to 
+i>target the elemnts
+ii>do the changes 
+ 
+i>targeting the elemnts
+-------------------------
+To target HTML elemnts in java script there are two ways
+1>direct access 2>indirect access
+
+1>Direct Access
+----------------
+   let x=document.links          =>it target all the hyperlinks in webpage
+   let x=document.images	 =>
+   let x=document.body		 =>
+   let x=document.forms=>
+   let x=document.URL=>
+   let x=document.title=>
+
+ALL the elements can not be targeted directly so we use dom methods
+like 
+->document.getElementById()
+->document.getElementsByClassName()
+->document.getElementsByTagName()
+->document.getElementByName()
+->document.querySelector()
+->document.querySelectorAll()
+
+
+
+->document.getElementById()
+---------------------------
+it is used to target the elements based in the id name
+it accepts id name as an argument in the form of string.
+it returns only the first occurences
+
+Exp
+---
+<p id="para1">paragrapgh</p>
+<p>paragrah2</P>
+
+js code
+--------
+let p1=-document.getElementById('para1')
+clg(p1);
+
+
+->document.getElementsByClassName()
+-------------------------------------
+->it is used to target the elements based in the class name
+->it accepts class name as an argument in the form of string.
+->it target all the occurences and returns html collections
+->to access indivisually we used index position which starts from zero
+
+exp: 	<p class="para">paragrapgh</p>
+	<p class="para">paragrah2</P>
+	<p>paragrah3</P>
+
+	js code
+	----------
+	let p=document.getElementsByClassName("para");
+	clg(p); //HTML colection [p.para ,p.para ]
+	clg(p[0]);//<p class="para">paragrapgh</p>
+	clg(p[1]);//<p class="para">paragrapgh</p>
+	clg(p.length);
+
+
+
+->document.getElementsByTagName()
+-----------------------------------
+->it is used to target the elements based in the Tag name
+->it accepts Tag name as an argument in the form of string.
+->it target all the occurences and returns html collections
+->To access indivisually we used index position which starts from zero
+
+exp: 	<p>paragrapgh</p>
+	<p>paragrah2</P>
+	<p>paragrah3</P>
+
+	js code
+	----------
+	let p=document.getElementsByTagName("p");
+	clg(p); //HTML colection [p.paragraph ,p.paragraph ]
+	clg(p[0]);//<p>paragrapgh</p>
+	clg(p[1]);//<p>paragrapgh</p>
+	clg(p.length);
+
+
+->document.getElementByName()
+-------------------------------
+->It is used to target the elements based On the  value of name attribute.
+->It accepts the value of  name  attributes and returns nodeList
+
+
+exp;
+---
+<input type="text" name="username" required placeholder="enter userName">
+<input type="text" name="username" required placeholder="enter password">
+
+
+
+
+->document.querySelector()
+---------------------------
+->IT CAN TARGET THE ELEMENTS BASED ON ID ,CLASS ,TAG NAME 
+->it accepts css selector as an arguments (#idname,.classname,....)
+->it returns only the first occurecnces 
+->
+
+exp;
+---	<p class="para">paragrapgh1</p>
+	<p class="para">paragrah2</P>
+	<p>paragrah3</P>
+
+	js code
+	----------
+	let p=document.querySelector(".para");
+	clg(p); //<p class="para">paragrapgh1</p>
+	
+	let q=document.querySelector("p");
+	clg(q); //<p>paragrah3</P>
+
+->document.querySelectorAll()
+---------------------------
+->It is same as querySelctor() method but returns all occurences In form of NodeList
+->IT Can Target The Elemnts based on ID ,CLASS ,TAG NAME 
+->It accepts css selector as an arguments (#idname,.classname,tagname,....)
+
+EXP:
+-----
+	<p class="para">paragrapgh1</p>
+	<p class="para">paragrah2</P>
+	<p>paragrah3</P>
+
+	js code
+	----------
+	let p=document.querySelectorAll(".para");
+	clg(p); //NodeList[p.para,p.para]
+	
+	let q=document.querySelector("p");
+	clg(q); //NodeList[p,p,p]
+	
+	
+Changing the content 
+--------------------
+We can use innerText,InnnerHTML,textContent property 
+
+synatx:
+-------
+targetedEle.innerText="value";
+targetedEle.innerHTML="value";
+targetedEle.textContent="value";
+
+Apply Styles
+-----------
+targetedElement.style.cssPropName="value"
+targetedElement.style.cssText="css properties"
+
+
+
+
+
+
+
+
+
+
+
