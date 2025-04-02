@@ -1,0 +1,21 @@
+//Write a program to store two integers values and display largest of two numbers
+
+
+class 	LargestOfTwo{
+
+public static void main(String[] args){
+
+int a=5,b=3;
+
+String res=((a>b) ? a+"is largest" :b+"is largest");
+
+System.out.println(res);
+
+
+
+
+
+	
+	}
+
+}

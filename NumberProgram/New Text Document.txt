@@ -1,0 +1,28 @@
+//WAP TO FIND  THE SUM OF EVEN POSITION DIGITS FROM GIVEN NUMBER?
+
+class StrongNumber {
+    public static void strong(int n) {
+        int sum=0;
+        int temp=n;
+
+        while (n != 0) {
+            int r = n % 10; // Extracting the last digit
+	    int fact=1;
+            for (int i=1;i<=r;i++) { // Check if the digit is odd
+                fact=fact*i;
+                
+            }
+            sum=sum+fact;
+            n /= 10; // Update n in every iteration to remove the last digit
+        }
+
+        if(temp==sum){
+	   System.out.println("it is a strong number");
+	}
+         public static void main(String[] args){
+		for(int i=1;i<=10000000;i++){
+			strong(i);
+		}
+	}
+    }
+}

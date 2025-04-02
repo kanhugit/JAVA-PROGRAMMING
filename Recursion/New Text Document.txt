@@ -1,0 +1,21 @@
+//write a program to check the given Happy number is happy number or not using recusion 
+
+class HappyNumCheck{
+
+	public static int sumOfSquares(int n) {
+        int sum = 0;
+	while(n!=1 && n!=4){
+		while(n!=0){
+		  int r=n%10;
+		  sum +=r*r;
+		  n/10;
+		}
+		return sum;
+
+	}
+	return false;
+
+        }	
+	
+
+}
